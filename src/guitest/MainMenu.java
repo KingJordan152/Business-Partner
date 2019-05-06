@@ -12,6 +12,7 @@ package guitest;
 public class MainMenu extends javax.swing.JFrame {
 
     /**
+     * kill me
      * Creates new form MainMenu
      */
     public MainMenu() {
