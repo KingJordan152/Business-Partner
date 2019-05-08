@@ -1,5 +1,0 @@
-MedOne
-MedTwo
-med-three
-med-Four
-med five
