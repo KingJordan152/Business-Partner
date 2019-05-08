@@ -7,7 +7,7 @@ package guitest;
 
 /**
  *
- * @author elija
+ * @author All of us
  */
 public class MainMenu extends javax.swing.JFrame {
 
