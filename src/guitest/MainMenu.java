@@ -27,8 +27,7 @@ public class MainMenu extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -43,28 +42,37 @@ public class MainMenu extends javax.swing.JFrame {
         table = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setBackground(new java.awt.Color(66, 99, 100));
+        setTitle("Inventory | Main Menu");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(java.awt.Color.darkGray);
 
         addBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         addBtn.setText("ADD");
+        addBtn.setToolTipText("");
+        addBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
 
         removeBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         removeBtn.setText("REMOVE");
+        removeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         updateBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         updateBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateBtn.setLabel("UPDATE");
         updateBtn.setName("UPDATE"); // NOI18N
-        updateBtn.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        updateBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
             }
         });
 
         helpBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         helpBtn.setText("HELP");
+        helpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -105,41 +113,41 @@ public class MainMenu extends javax.swing.JFrame {
         );
 
         searchField.setText("Search");
-        searchField.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchFieldActionPerformed(evt);
             }
         });
 
         searchBtn.setText("Search");
+        searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         table.setAutoCreateRowSorter(true);
+        table.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
 
             },
-            new String []
-            {
+            new String [] {
                 "Company", "Name", "Quantity"
             }
-        )
-        {
-            boolean[] canEdit = new boolean []
-            {
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         table.setCellSelectionEnabled(true);
         jScrollPane1.setViewportView(table);
         table.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setHeaderValue("Company");
+            table.getColumnModel().getColumn(1).setHeaderValue("Name");
+            table.getColumnModel().getColumn(2).setHeaderValue("Quantity");
+        }
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -196,7 +204,16 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         // TODO add your handling code here:
+        new UpdateMenu().setVisible(true);
     }//GEN-LAST:event_updateBtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        
+        new AddMedication().setVisible(true);
+        
+        
+    }//GEN-LAST:event_addBtnActionPerformed
 
     /**
      * @param args the command line arguments
