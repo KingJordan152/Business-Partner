@@ -5,7 +5,10 @@
  */
 
 package guitest;
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.io.IOException;
 /**
  *
  * @author elija
@@ -23,6 +26,7 @@ public class AddMedication extends javax.swing.JFrame {
         nameList = new ArrayList <String> ();
         countList = new ArrayList <Integer> ();
         barcodeList = new ArrayList <Long> ();
+        
         
     }
 
@@ -43,16 +47,17 @@ public class AddMedication extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         count = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        barcode = new javax.swing.JTextField();
+        manuField = new javax.swing.JTextField();
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Inventory | Add Medication");
         setBackground(new java.awt.Color(204, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel1.setText("Medication Name");
@@ -84,7 +89,7 @@ public class AddMedication extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Manufacturer");
 
-        barcode.setForeground(new java.awt.Color(153, 153, 153));
+        manuField.setForeground(new java.awt.Color(153, 153, 153));
 
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -119,7 +124,7 @@ public class AddMedication extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel3)
-                                .addComponent(barcode)
+                                .addComponent(manuField)
                                 .addComponent(medName, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
                                 .addComponent(count, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -134,7 +139,7 @@ public class AddMedication extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manuField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -152,7 +157,11 @@ public class AddMedication extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void fileOutput()
+    {
+        
+    }
+    
     private void medNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_medNameActionPerformed
@@ -163,14 +172,32 @@ public class AddMedication extends javax.swing.JFrame {
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
+        
+        try 
+        {
+            java.io.File medFile = new java.io.File("testMeds.txt");
+            PrintWriter output = new PrintWriter(medFile);
+            output.print(medName.getText() + " ");
+            //output.print(Integer.parseInt(count.getText()) + " ");
+            output.println(manuField.getText());
+            
+        }
+            catch(Exception e)
+            {
+                
+            }
+        
         nameList.add(medName.getText());
         countList.add(Integer.parseInt(count.getText()));
-        barcodeList.add(Long.parseLong(barcode.getText()));
+        barcodeList.add(Long.parseLong(manuField.getText()));
         
         this.dispose();
         System.out.println(nameList);
         System.out.println(countList);
         System.out.println(barcodeList);
+        
+        
+        
         
     }//GEN-LAST:event_saveBtnActionPerformed
 
@@ -220,7 +247,6 @@ public class AddMedication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField barcode;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JTextField count;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
@@ -229,6 +255,7 @@ public class AddMedication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JTextField manuField;
     private javax.swing.JTextField medName;
     private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables

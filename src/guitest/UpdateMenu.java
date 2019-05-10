@@ -15,6 +15,9 @@ public class UpdateMenu extends javax.swing.JFrame {
      * Creates new form UpdateMenu
      */
     public UpdateMenu() {
+        MainMenu myMenu = new MainMenu();
+        myMenu.readMeds();
+        myMenu.addRowToJTable();
         initComponents();
     }
 
