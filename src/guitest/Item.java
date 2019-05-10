@@ -24,5 +24,15 @@ public class Item
    {
        return name;
    }
+   
+   public String getCompName()
+   {
+       return company;
+   }
+   
+   public int getQuantity()
+           {
+               return quant;
+           }
     
 }

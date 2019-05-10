@@ -33,9 +33,10 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         
         initComponents();
+        addRowToJTable();
     }
     
-
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,6 +56,8 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
         searchBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inventory | Main Menu");
@@ -137,6 +140,16 @@ public class MainMenu extends javax.swing.JFrame {
         searchBtn.setText("Search");
         searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Med Name", "Comp Name", "Quant"
+            }
+        ));
+        jScrollPane2.setViewportView(jTable2);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -145,6 +158,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jScrollPane2)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,7 +167,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,7 +199,7 @@ public class MainMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void readMeds()
+    private ArrayList readMeds()
     {
         itemList = new ArrayList <Item> ();
         try {
@@ -201,9 +217,22 @@ public class MainMenu extends javax.swing.JFrame {
         {
             
         }
-        
-        
+         return itemList;
         }
+    public void addRowToJTable()
+    {
+        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
+        ArrayList<Item> itemList2 = readMeds();
+        Object rowData[] = new Object[3];
+        for (int i = 0; i < itemList2.size(); i++)
+        {
+            rowData[0] = itemList2.get(i).getMedName();
+            rowData[1] = itemList2.get(i).getCompName();
+            rowData[2] = itemList2.get(i).getQuantity();
+            model.addRow(rowData);
+        }
+        
+    }
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchFieldActionPerformed
@@ -243,6 +272,8 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable2;
     private javax.swing.JButton removeBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchField;
