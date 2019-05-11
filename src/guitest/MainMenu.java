@@ -199,7 +199,7 @@ public class MainMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private ArrayList readMeds()
+    public ArrayList readMeds()
     {
         itemList = new ArrayList <Item> ();
         try {
