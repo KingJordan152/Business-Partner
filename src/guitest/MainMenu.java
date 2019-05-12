@@ -63,6 +63,7 @@ public class MainMenu extends javax.swing.JFrame {
         setTitle("Inventory | Main Menu");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setForeground(java.awt.Color.darkGray);
+        setName("MainMenuFrame"); // NOI18N
 
         addBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         addBtn.setText("ADD");
