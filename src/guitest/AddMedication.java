@@ -23,8 +23,7 @@ public class AddMedication extends javax.swing.JFrame {
         nameList = new ArrayList <String> ();
         countList = new ArrayList <Integer> ();
         barcodeList = new ArrayList <Long> ();
-        
-    }
+        }
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -4,3 +4,15 @@ Nutri-West B_Complex 21
 Nutri-West Biostress_B 12
 APEX Additives 31 
 APEX Adrenal_Terrain 4
+Nutri-West Adenosyl_B-12 -1
+Nutri-West Adreno-Lyph_Plus -1
+Nutri-West B_Complex -1
+Nutri-West Biostress_B -1
+Nutri-West BP_Renew -1
+Nutri-West C-1000 -1
+Nutri-West C.A.C_Factor -1
+Nutri-West Calac -1
+Nutri-West Cal/Mag_1:1 -1
+Nutri-West CoQ10_Plus -1
+Nutri-West Complete_Brain_Charge -1
+Nutri-West Comp.Children's_Co-Factor -1

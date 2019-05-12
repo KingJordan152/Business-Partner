@@ -140,6 +140,9 @@ public class MainMenu extends javax.swing.JFrame {
         searchBtn.setText("Search");
         searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jTable2.setAutoCreateRowSorter(true);
+        jTable2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jTable2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -199,7 +202,7 @@ public class MainMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private ArrayList readMeds()
+    public ArrayList readMeds()
     {
         itemList = new ArrayList <Item> ();
         try {
@@ -207,8 +210,13 @@ public class MainMenu extends javax.swing.JFrame {
         while(medsIn.hasNext())
         {
             medName = medsIn.next();
+            if(medName.contains("_"))
+            {
+                medName.replace("_", " ");
+            }
             compName = medsIn.next();
             quantity = medsIn.nextInt();
+            
             itemList.add(new Item(medName, compName, quantity));
         }
  
