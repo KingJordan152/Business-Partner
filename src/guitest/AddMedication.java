@@ -5,6 +5,11 @@
  */
 
 package guitest;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.Writer;
 import java.util.ArrayList;
 /**
  *
@@ -42,7 +47,7 @@ public class AddMedication extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         count = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        barcode = new javax.swing.JTextField();
+        manuName = new javax.swing.JTextField();
         cancelBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
 
@@ -83,7 +88,7 @@ public class AddMedication extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Manufacturer");
 
-        barcode.setForeground(new java.awt.Color(153, 153, 153));
+        manuName.setForeground(new java.awt.Color(153, 153, 153));
 
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +123,7 @@ public class AddMedication extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel1)
                                 .addComponent(jLabel3)
-                                .addComponent(barcode)
+                                .addComponent(manuName)
                                 .addComponent(medName, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
                                 .addComponent(count, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
@@ -133,7 +138,7 @@ public class AddMedication extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(barcode, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(manuName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -162,9 +167,22 @@ public class AddMedication extends javax.swing.JFrame {
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-        nameList.add(medName.getText());
-        countList.add(Integer.parseInt(count.getText()));
-        barcodeList.add(Long.parseLong(barcode.getText()));
+        System.out.println(manuName.getText() + " " + medName.getText() + " " + count.getText());
+        try
+        {
+            Writer fileWriter = new FileWriter(new File("testMeds.txt"), true);
+            PrintWriter filePrint = new PrintWriter(fileWriter);
+            filePrint.println(manuName.getText() + " " + medName.getText() + " " + count.getText());
+            System.out.println("DONE");
+            filePrint.close();
+            
+            
+        }
+        catch(IOException e)
+        {
+            System.out.println("Error");
+        }
+                
         
         this.dispose();
         System.out.println(nameList);
@@ -219,7 +237,6 @@ public class AddMedication extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField barcode;
     private javax.swing.JButton cancelBtn;
     private javax.swing.JTextField count;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
@@ -228,6 +245,7 @@ public class AddMedication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JPopupMenu jPopupMenu2;
+    private javax.swing.JTextField manuName;
     private javax.swing.JTextField medName;
     private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
