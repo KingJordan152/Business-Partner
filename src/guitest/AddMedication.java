@@ -173,7 +173,17 @@ public class AddMedication extends javax.swing.JFrame {
         {
             Writer fileWriter = new FileWriter(new File("testMeds.txt"), true);
             PrintWriter filePrint = new PrintWriter(fileWriter);
-            filePrint.println(manuName.getText() + " " + medName.getText() + " " + count.getText());
+            String manu = manuName.getText();
+            String med = medName.getText();
+            if (manu.contains(" "))
+            {
+                manu = manu.replace(" ", "_");
+            }
+            if (med.contains(" "))
+            {
+                med = med.replace(" ", "_");
+            }
+            filePrint.println(manu + " " + med + " " + count.getText());
             System.out.println("DONE");
             filePrint.close();
             
@@ -183,7 +193,7 @@ public class AddMedication extends javax.swing.JFrame {
         {
             System.out.println("Error");
         }
-                
+        
         
         this.dispose();
         System.out.println(nameList);
