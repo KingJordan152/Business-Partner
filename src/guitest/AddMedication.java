@@ -63,7 +63,6 @@ public class AddMedication extends javax.swing.JFrame {
 
         medName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         medName.setForeground(new java.awt.Color(153, 153, 153));
-        medName.setText("Add Medication Name Here");
         medName.setName(""); // NOI18N
         medName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -90,6 +89,7 @@ public class AddMedication extends javax.swing.JFrame {
 
         manuName.setForeground(new java.awt.Color(153, 153, 153));
 
+        cancelBtn.setBackground(java.awt.SystemColor.activeCaptionBorder);
         cancelBtn.setText("Cancel");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,6 +97,7 @@ public class AddMedication extends javax.swing.JFrame {
             }
         });
 
+        saveBtn.setBackground(java.awt.SystemColor.activeCaptionBorder);
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
