@@ -158,7 +158,16 @@ public class MainMenu extends javax.swing.JFrame {
             new String [] {
                 "Med Name", "Comp Name", "Quant"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTable2.setEditingColumn(0);
         jScrollPane2.setViewportView(jTable2);
 
         refreshBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
