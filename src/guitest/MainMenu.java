@@ -85,6 +85,11 @@ public class MainMenu extends javax.swing.JFrame {
         removeBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         removeBtn.setText("REMOVE");
         removeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        removeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBtnActionPerformed(evt);
+            }
+        });
 
         updateBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         updateBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -295,6 +300,11 @@ public class MainMenu extends javax.swing.JFrame {
         this.dispose();
         new MainMenu().setVisible(true);
     }//GEN-LAST:event_refreshBtnActionPerformed
+
+    private void removeBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBtnActionPerformed
+        // TODO add your handling code here:
+        new RemoveMenu().setVisible(true);
+    }//GEN-LAST:event_removeBtnActionPerformed
 
     /**
      * @param args the command line arguments
