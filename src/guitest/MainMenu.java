@@ -176,6 +176,7 @@ public class MainMenu extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable2);
 
         refreshBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        refreshBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\elija\\Documents\\NetBeansProjects\\Business-Partner\\refresh.png")); // NOI18N
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
