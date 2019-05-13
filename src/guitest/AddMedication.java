@@ -199,6 +199,7 @@ public class AddMedication extends javax.swing.JFrame {
     private void medNameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_medNameMouseClicked
         // TODO add your handling code here:
         
+        
     }//GEN-LAST:event_medNameMouseClicked
 
     /**
