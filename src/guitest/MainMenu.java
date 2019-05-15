@@ -72,6 +72,7 @@ public class MainMenu extends javax.swing.JFrame {
         setForeground(java.awt.Color.darkGray);
         setName("MainMenuFrame"); // NOI18N
 
+        addBtn.setBackground(new java.awt.Color(255, 255, 255));
         addBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         addBtn.setText("ADD");
         addBtn.setToolTipText("");
@@ -82,6 +83,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        removeBtn.setBackground(new java.awt.Color(255, 255, 255));
         removeBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         removeBtn.setText("REMOVE");
         removeBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -91,6 +93,7 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        updateBtn.setBackground(new java.awt.Color(255, 255, 255));
         updateBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         updateBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         updateBtn.setLabel("UPDATE");
@@ -101,9 +104,15 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        helpBtn.setBackground(new java.awt.Color(255, 255, 255));
         helpBtn.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         helpBtn.setText("HELP");
         helpBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        helpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -123,24 +132,24 @@ public class MainMenu extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(removeBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(helpBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE)
-                .addGap(12, 12, 12))
+                .addComponent(helpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(76, 76, 76))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         searchField.setText("Search");
@@ -150,8 +159,16 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
 
+        searchBtn.setBackground(java.awt.Color.lightGray);
+        searchBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\elija\\Documents\\NetBeansProjects\\Business-Partner\\Search-Icon-PNG-715x715.png")); // NOI18N
         searchBtn.setText("Search");
         searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchBtnActionPerformed(evt);
+            }
+        });
 
         jTable2.setAutoCreateRowSorter(true);
         jTable2.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -161,11 +178,11 @@ public class MainMenu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Med Name", "Comp Name", "Quant"
+                "Company", "Medication", "Quantity"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -175,6 +192,7 @@ public class MainMenu extends javax.swing.JFrame {
         jTable2.setEditingColumn(0);
         jScrollPane2.setViewportView(jTable2);
 
+        refreshBtn.setBackground(java.awt.SystemColor.scrollbar);
         refreshBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         refreshBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\elija\\Documents\\NetBeansProjects\\Business-Partner\\refresh.png")); // NOI18N
         refreshBtn.setText("Refresh");
@@ -189,10 +207,10 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(searchField, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+                .addComponent(searchField)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jScrollPane2)
+                .addComponent(searchBtn))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -207,7 +225,7 @@ public class MainMenu extends javax.swing.JFrame {
                     .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(refreshBtn)
                 .addContainerGap())
         );
@@ -230,7 +248,7 @@ public class MainMenu extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 687, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 8, Short.MAX_VALUE))
+                        .addGap(0, 80, Short.MAX_VALUE))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -306,6 +324,14 @@ public class MainMenu extends javax.swing.JFrame {
         // TODO add your handling code here:
         new RemoveMenu().setVisible(true);
     }//GEN-LAST:event_removeBtnActionPerformed
+
+    private void helpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_helpBtnActionPerformed
+
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     /**
      * @param args the command line arguments
