@@ -43,6 +43,7 @@ public class RemoveMenu extends javax.swing.JFrame {
 
         searchField.setText("Search");
 
+        searchBtn.setBackground(new java.awt.Color(214, 211, 206));
         searchBtn.setText("Search");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -66,6 +67,7 @@ public class RemoveMenu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        saveBtn.setBackground(new java.awt.Color(214, 211, 206));
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +75,7 @@ public class RemoveMenu extends javax.swing.JFrame {
             }
         });
 
+        cancelBtn.setBackground(new java.awt.Color(214, 211, 206));
         cancelBtn.setText("Cancel ");
         cancelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -85,11 +88,11 @@ public class RemoveMenu extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
+                .addContainerGap(15, Short.MAX_VALUE)
                 .addComponent(cancelBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saveBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +104,7 @@ public class RemoveMenu extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
+        jTable1.setBackground(java.awt.Color.lightGray);
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -130,6 +134,7 @@ public class RemoveMenu extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
 
+        removeBtn.setBackground(new java.awt.Color(214, 211, 206));
         removeBtn.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         removeBtn.setText("Remove");
 

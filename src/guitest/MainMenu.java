@@ -161,7 +161,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         searchBtn.setBackground(java.awt.Color.lightGray);
         searchBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        searchBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\elija\\Documents\\NetBeansProjects\\Business-Partner\\Search-Icon-PNG-715x715.png")); // NOI18N
         searchBtn.setText("Search");
         searchBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         searchBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -194,7 +193,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         refreshBtn.setBackground(java.awt.SystemColor.scrollbar);
         refreshBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        refreshBtn.setIcon(new javax.swing.ImageIcon("C:\\Users\\elija\\Documents\\NetBeansProjects\\Business-Partner\\refresh.png")); // NOI18N
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,10 +205,11 @@ public class MainMenu extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(searchField)
+                .addComponent(searchField, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(searchBtn))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 804, Short.MAX_VALUE)
+                .addComponent(searchBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane2)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(refreshBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
