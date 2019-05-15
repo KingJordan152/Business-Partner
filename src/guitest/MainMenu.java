@@ -335,6 +335,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     /**
      * GITHUB IS KILLING ME
+     * Still killing me
+     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
