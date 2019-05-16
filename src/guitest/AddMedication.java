@@ -6,11 +6,15 @@
 
 package guitest;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 /**
  *
  * @author elija
@@ -20,14 +24,9 @@ public class AddMedication extends javax.swing.JFrame {
     /**
      * Creates new form AddMedication
      */
-    public ArrayList <String> nameList;
-    public ArrayList <Integer> countList;
-    public ArrayList <Long> barcodeList;
+    
     public AddMedication() {
         initComponents();
-        nameList = new ArrayList <String> ();
-        countList = new ArrayList <Integer> ();
-        barcodeList = new ArrayList <Long> ();
         }
 
     /**
@@ -175,15 +174,33 @@ public class AddMedication extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_countActionPerformed
 
-    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
-        // TODO add your handling code here:
-        System.out.println(manuName.getText() + " " + medName.getText() + " " + count.getText());
-        try
+    public void checkMeds()
+    {
+        try 
+        {
+        ArrayList <String> nameList = new ArrayList <String> ();
+        ArrayList <Integer> countList = new ArrayList <Integer> ();
+        ArrayList <String> manuList = new ArrayList <String> ();
+            Scanner in = new Scanner(new File("testMeds.txt"));
+            manuList.add(in.next());
+            nameList.add(in.next());
+            countList.add(in.nextInt());
+            
+            for (int i = 0; i < nameList.size(); i++)
+        {
+            if (nameList.get(i).equals(medName.getText()))
+            {
+                new AlreadyExistsError().setVisible(true);
+            }
+            else
+            {
+                 try
         {
             Writer fileWriter = new FileWriter(new File("testMeds.txt"), true);
             PrintWriter filePrint = new PrintWriter(fileWriter);
             String manu = manuName.getText();
             String med = medName.getText();
+            
             if (manu.contains(" "))
             {
                 manu = manu.replace(" ", "_");
@@ -202,12 +219,23 @@ public class AddMedication extends javax.swing.JFrame {
         {
             System.out.println("Error");
         }
+            }
+        }
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(AddMedication.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        // TODO add your handling code here:
+        checkMeds();
+       
         
         
         this.dispose();
-        System.out.println(nameList);
-        System.out.println(countList);
-        System.out.println(barcodeList);
         
     }//GEN-LAST:event_saveBtnActionPerformed
 
