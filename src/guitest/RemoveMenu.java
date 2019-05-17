@@ -5,17 +5,26 @@
  */
 package guitest;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
- * @author elija
+ * @author Jordan
  */
 public class RemoveMenu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RemoveMenu
-     */
+    private int quantity;
+    private String medName, compName;
+    private ArrayList <Item> itemList;
+    
     public RemoveMenu() {
         initComponents();
+        addRowToJTable(removeTable);
     }
 
     /**
@@ -25,7 +34,8 @@ public class RemoveMenu extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         jPanel1 = new javax.swing.JPanel();
         searchField = new javax.swing.JTextField();
@@ -35,7 +45,7 @@ public class RemoveMenu extends javax.swing.JFrame {
         cancelBtn = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        removeTable = new javax.swing.JTable();
         removeBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -69,16 +79,20 @@ public class RemoveMenu extends javax.swing.JFrame {
 
         saveBtn.setBackground(new java.awt.Color(214, 211, 206));
         saveBtn.setText("Save");
-        saveBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        saveBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 saveBtnActionPerformed(evt);
             }
         });
 
         cancelBtn.setBackground(new java.awt.Color(214, 211, 206));
         cancelBtn.setText("Cancel ");
-        cancelBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cancelBtn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cancelBtnActionPerformed(evt);
             }
         });
@@ -104,24 +118,29 @@ public class RemoveMenu extends javax.swing.JFrame {
                 .addGap(30, 30, 30))
         );
 
-        jTable1.setBackground(java.awt.Color.lightGray);
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        removeTable.setBackground(java.awt.Color.white);
+        removeTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][]
+            {
 
             },
-            new String [] {
+            new String []
+            {
                 "Medication Name", "Manufacturer", "Quantity"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
+        )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false, false, false
             };
 
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(removeTable);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -172,7 +191,57 @@ public class RemoveMenu extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    public ArrayList readMeds()
+    {
+        itemList = new ArrayList <> ();
+        
+        try 
+        {
+            Scanner medsIn = new Scanner( new File("testMeds.txt") );
+            while (medsIn.hasNext())
+            {
+                medName = medsIn.next();
+                if(medName.contains("_"))
+                {
+                    medName.replace("_", " ");
+                }
+                compName = medsIn.next();
+                try
+                {
+                    quantity = medsIn.nextInt();
+                }
+                catch (Exception e)
+                {
+                    continue;
+                }
+            
+                itemList.add(new Item(medName, compName, quantity));
+            }
+        }
+        catch (IOException e) 
+        {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        return itemList;
+    }
+    
+    public void addRowToJTable(javax.swing.JTable jTablex)
+    {
+        DefaultTableModel model = (DefaultTableModel) jTablex.getModel();
+        ArrayList<Item> itemList2 = readMeds();
+        Object rowData[] = new Object[3];
+        
+        for (int i = 0; i < itemList2.size(); i++)
+        {
+            rowData[0] = itemList2.get(i).getMedName();
+            rowData[1] = itemList2.get(i).getCompName();
+            rowData[2] = itemList2.get(i).getQuantity();
+            model.addRow(rowData);
+        }
+    }
+    
     private void cancelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelBtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -212,6 +281,7 @@ public class RemoveMenu extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new RemoveMenu().setVisible(true);
             }
@@ -224,8 +294,8 @@ public class RemoveMenu extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton removeBtn;
+    private javax.swing.JTable removeTable;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton searchBtn;
     private javax.swing.JTextField searchField;

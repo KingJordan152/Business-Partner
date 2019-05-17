@@ -57,9 +57,9 @@ Nutri-West Maganese-GC -1
 Nutri-West Methyl_B12_Loz -1
 Nutri-West 5_MTH_Folate -1
 Nutri-West Methyl_Renew -1
-Apex Additives -1
-
+Apex Additives -1S
 Nutri-West Biostress_B -9
+
 Apex Additives 9
 Nutri-West NAC_Renew -1
 Nutri-West Niacin_B-6 -1

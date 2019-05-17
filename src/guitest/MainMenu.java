@@ -19,9 +19,8 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author All of us
- *Will this save?
- * This is a test for Eli
  */
+
 public class MainMenu extends javax.swing.JFrame {
     private int quantity;
     private String medName, compName;
@@ -31,9 +30,7 @@ public class MainMenu extends javax.swing.JFrame {
     private DefaultTableModel DefaultTableModel;
     private JTable jTable3;
     private Object jScrollPane1;
-    /**
-     * Bruh
-     */
+
     public MainMenu(){
         
         initComponents();
@@ -262,27 +259,34 @@ public class MainMenu extends javax.swing.JFrame {
     {
         itemList = new ArrayList <Item> ();
         try {
-        Scanner medsIn = new Scanner( new File("testMeds.txt"));
-        while(medsIn.hasNext())
-        {
-            medName = medsIn.next();
-            if(medName.contains("_"))
+            Scanner medsIn = new Scanner( new File("testMeds.txt"));
+            while(medsIn.hasNext())
             {
-                medName.replace("_", " ");
+                medName = medsIn.next();
+                if(medName.contains("_"))
+                {
+                    medName.replace("_", " ");
+                }
+                compName = medsIn.next();
+                try
+                {
+                    quantity = medsIn.nextInt();
+                }
+                catch (Exception e)
+                {
+                    continue;
+                }
+            
+                itemList.add(new Item(medName, compName, quantity));
             }
-            compName = medsIn.next();
-            quantity = medsIn.nextInt();
-            
-            itemList.add(new Item(medName, compName, quantity));
         }
- 
+        catch (IOException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        catch (IOException e)
-        {
-            
-        }
-         return itemList;
-        }
+        
+        return itemList;
+    }
+    
     public void addRowToJTable()
     {
         DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
@@ -295,8 +299,8 @@ public class MainMenu extends javax.swing.JFrame {
             rowData[2] = itemList2.get(i).getQuantity();
             model.addRow(rowData);
         }
-        
     }
+    
     private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_searchFieldActionPerformed
@@ -309,10 +313,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        
-        new AddMedication().setVisible(true);
-        
-        
+        new AddMedication().setVisible(true);      
     }//GEN-LAST:event_addBtnActionPerformed
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
