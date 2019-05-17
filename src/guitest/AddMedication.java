@@ -61,7 +61,6 @@ public class AddMedication extends javax.swing.JFrame {
         jLabel1.setText("Medication Name");
 
         medName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        medName.setForeground(new java.awt.Color(153, 153, 153));
         medName.setName(""); // NOI18N
         medName.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -85,8 +84,6 @@ public class AddMedication extends javax.swing.JFrame {
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel3.setText("Manufacturer");
-
-        manuName.setForeground(new java.awt.Color(153, 153, 153));
 
         cancelBtn.setBackground(java.awt.SystemColor.activeCaptionBorder);
         cancelBtn.setText("Cancel");
@@ -174,8 +171,10 @@ public class AddMedication extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_countActionPerformed
 
-    public void checkMeds()
+    public boolean checkMeds()
     {
+        if (isNotEmpty())
+        {
         try 
         {
         ArrayList <String> nameList = new ArrayList <String> ();
@@ -204,10 +203,8 @@ public class AddMedication extends javax.swing.JFrame {
             {
                 med = med.replace(" ", "_");
             }
-            if (isNotEmpty())
-            {
+            
             filePrint.println(manu + " " + med + " " + count.getText());
-            }
             System.out.println("DONE");
             filePrint.close();
             
@@ -222,18 +219,26 @@ public class AddMedication extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             Logger.getLogger(AddMedication.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+        return true;
+        }
+        else 
+            return false;
     }
     private boolean isNotEmpty()
     {
         String medValue = medName.getText();
         String manuValue = manuName.getText();
         boolean isShown = false;
-        if (medValue.equals("") || medValue.equals(""))
+        if (medValue.equals("") || manuValue.equals(""))
         {
                // needs to have error for both
-               new EnterNameError().setVisible(true);
+            if (!isShown)
+            {
+                new EnterNameError().setVisible(true);
+                isShown = true;
+            }
+            
+               
            
            return false;
         }
@@ -254,12 +259,9 @@ public class AddMedication extends javax.swing.JFrame {
     
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
-        checkMeds();
-        
+        if (checkMeds())
+            this.dispose();
        
-        
-        
-        this.dispose();
         
     }//GEN-LAST:event_saveBtnActionPerformed
 
