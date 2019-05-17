@@ -173,7 +173,13 @@ public class AddMedication extends javax.swing.JFrame {
         {
             Writer fileWriter = new FileWriter(new File("testMeds.txt"), true);
             PrintWriter filePrint = new PrintWriter(fileWriter);
-            filePrint.println(manuName.getText() + " " + medName.getText() + " " + count.getText());
+            String manu = manuName.getText();
+            String med = medName.getText();
+            
+                manu.replaceAll(" ", "_");
+                med.replaceAll(" ", "_");
+            
+            filePrint.println(manu + " " + med + " " + count.getText());
             System.out.println("DONE");
             filePrint.close();
             
