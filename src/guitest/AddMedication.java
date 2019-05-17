@@ -185,16 +185,20 @@ public class AddMedication extends javax.swing.JFrame {
             manuList.add(in.next());
             nameList.add(in.next());
             countList.add(in.nextInt());
+            boolean isThere = false;
             
             for (int i = 0; i < nameList.size(); i++)
         {
-            if (nameList.get(i).equals(medName.getText()))
+            String name = nameList.get(i);
+            name = name.replace("_", " ");
+            System.out.println("IT IS -->" + name);
+            if (name.equals(medName.getText()))
             {
-                new AlreadyExistsError().setVisible(true);
+                isThere = true;
             }
-            else
-            {
-                 try
+            if(isThere == false)
+            
+         /* try       
         {
             Writer fileWriter = new FileWriter(new File("testMeds.txt"), true);
             PrintWriter filePrint = new PrintWriter(fileWriter);
@@ -219,7 +223,11 @@ public class AddMedication extends javax.swing.JFrame {
         {
             System.out.println("Error");
         }
-            }
+            */
+         if (isThere)
+        {
+            new AlreadyExistsError().setVisible(true);
+        }
         }
             
             
