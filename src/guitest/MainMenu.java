@@ -188,7 +188,9 @@ public class MainMenu extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jTable2.setEditingColumn(0);
+        jTable2.setIntercellSpacing(new java.awt.Dimension(1, 2));
         jScrollPane2.setViewportView(jTable2);
 
         refreshBtn.setBackground(java.awt.SystemColor.scrollbar);

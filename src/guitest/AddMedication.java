@@ -187,24 +187,15 @@ public class AddMedication extends javax.swing.JFrame {
             countList.add(in.nextInt());
             boolean isThere = false;
             
-            for (int i = 0; i < nameList.size(); i++)
-        {
-            String name = nameList.get(i);
-            name = name.replace("_", " ");
-            System.out.println("IT IS -->" + name);
-            if (name.equals(medName.getText()))
-            {
-                isThere = true;
-            }
-            if(isThere == false)
             
-         /* try       
+            
+          try       
         {
             Writer fileWriter = new FileWriter(new File("testMeds.txt"), true);
             PrintWriter filePrint = new PrintWriter(fileWriter);
             String manu = manuName.getText();
             String med = medName.getText();
-            
+            isNotEmpty();
             if (manu.contains(" "))
             {
                 manu = manu.replace(" ", "_");
@@ -213,7 +204,10 @@ public class AddMedication extends javax.swing.JFrame {
             {
                 med = med.replace(" ", "_");
             }
+            if (isNotEmpty())
+            {
             filePrint.println(manu + " " + med + " " + count.getText());
+            }
             System.out.println("DONE");
             filePrint.close();
             
@@ -223,12 +217,6 @@ public class AddMedication extends javax.swing.JFrame {
         {
             System.out.println("Error");
         }
-            */
-         if (isThere)
-        {
-            new AlreadyExistsError().setVisible(true);
-        }
-        }
             
             
         } catch (FileNotFoundException ex) {
@@ -237,9 +225,37 @@ public class AddMedication extends javax.swing.JFrame {
         
         
     }
+    private boolean isNotEmpty()
+    {
+        String medValue = medName.getText();
+        String manuValue = manuName.getText();
+        boolean isShown = false;
+        if (medValue.equals("") || medValue.equals(""))
+        {
+               // needs to have error for both
+               new EnterNameError().setVisible(true);
+           
+           return false;
+        }
+        /*else if (medValue.equals(""))
+        {
+            new EnterNameError().setVisible(true);
+            return false;
+        }
+        else if (manuValue.equals(""))
+        {
+            new EnterNameError().setVisible(true);
+            return false;
+        }*/
+        else
+            return true;
+       
+    }
+    
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
         checkMeds();
+        
        
         
         
